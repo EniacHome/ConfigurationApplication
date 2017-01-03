@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.EniacDevelopment.Configuration_Application.View.Root_Layout_controller">
+   <children>
+      <MenuBar fx:id="menu_bar" prefHeight="0.0" prefWidth="1200.0">
+        <menus>
+          <Menu fx:id="sensors_menu" mnemonicParsing="false" text="Sensors">
+            <items>
+              <MenuItem fx:id="sensor_status_tab" mnemonicParsing="false" text="Sensor Status" />
+                  <MenuItem fx:id="sensor_statistics_tab" mnemonicParsing="false" text="Sensor Statistics" />
+            </items>
+          </Menu>
+          <Menu fx:id="alarm_menu" mnemonicParsing="false" text="Alarm">
+            <items>
+              <MenuItem fx:id="alarm_tab" mnemonicParsing="false" text="Alarm" />
+            </items>
+          </Menu>
+          <Menu fx:id="user_menu" mnemonicParsing="false" text="Users">
+            <items>
+              <MenuItem fx:id="user_tab" mnemonicParsing="false" text="Users" />
+            </items>
+          </Menu>
+            <Menu fx:id="application_menu" mnemonicParsing="false" text="Application">
+              <items>
+                <MenuItem fx:id="configuration_tab" mnemonicParsing="false" text="Configuration" />
+                  <MenuItem fx:id="log_out_tab" mnemonicParsing="false" text="Log out" />
+                  <MenuItem fx:id="exit_tab" mnemonicParsing="false" onAction="#handle_exit_tab" text="Exit" />
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+      <Line endX="1200.0" />
+      <StackPane fx:id="sceneHolder" prefHeight="695.0" prefWidth="1200.0" />
+   </children>
+</VBox>
