@@ -13,7 +13,7 @@
         <menus>
           <Menu fx:id="sensors_menu" mnemonicParsing="false" text="Sensors">
             <items>
-              <MenuItem fx:id="sensor_status_tab" mnemonicParsing="false" text="Sensor Status" />
+              <MenuItem fx:id="sensor_status_tab" mnemonicParsing="false" onAction="#handle_sensor_status_tab" text="Sensor Status" />
                   <MenuItem fx:id="sensor_statistics_tab" mnemonicParsing="false" text="Sensor Statistics" />
             </items>
           </Menu>
@@ -29,7 +29,7 @@
           </Menu>
             <Menu fx:id="application_menu" mnemonicParsing="false" text="Application">
               <items>
-                <MenuItem fx:id="configuration_tab" mnemonicParsing="false" text="Configuration" />
+                <MenuItem fx:id="configuration_tab" mnemonicParsing="false" onAction="#handle_configuration_tab" text="Configuration" />
                   <MenuItem fx:id="log_out_tab" mnemonicParsing="false" text="Log out" />
                   <MenuItem fx:id="exit_tab" mnemonicParsing="false" onAction="#handle_exit_tab" text="Exit" />
               </items>

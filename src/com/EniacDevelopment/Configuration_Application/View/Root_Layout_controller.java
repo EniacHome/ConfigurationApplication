@@ -5,6 +5,7 @@ import com.EniacDevelopment.Configuration_Application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
 
@@ -67,5 +68,10 @@ public class Root_Layout_controller {
     @FXML
     private void handle_sensor_status_tab(){
         Scene_Navigator.load_Scene(Scene_Navigator.SENSOR);
+    }
+
+    @FXML
+    private void handle_configuration_tab(){
+        Scene_Navigator.load_Scene(Scene_Navigator.CONFIGURATION);
     }
 }

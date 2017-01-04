@@ -17,7 +17,7 @@ import java.io.IOException;
  * All methods on the navigator are static to facilitate
  * simple access from anywhere in the application.
  *
- * NOTE*: Only one overlay stage at the time kan be opened.
+ * NOTE*: Only one overlay stage at the time can be opened.
  *
  * Created by nickd on 12/28/2016.
  */
@@ -25,10 +25,12 @@ public class Stage_Navigator {
     public static Stage overlay_stage;
 
     /*Constants that contain the file locations of the *.fxml Stage files*/
-    public static final String LOGIN_SCREEN         = "/com/EniacDevelopment/Configuration_Application/view/Login.fxml";
-    public static final String ADD_USER             = "/com/EniacDevelopment/Configuration_Application/view/Uses.fxml";
-    public static final String EDIT_USER            = "/com/EniacDevelopment/Configuration_Application/view/Sensor_Edit_dialog.fxml";
-    public static final String TIMER                = "/com/EniacDevelopment/Configuration_Application/view/Timer.fxml";
+    public static final String LOGIN_SCREEN         = "/com/EniacDevelopment/Configuration_Application/View/Login.fxml";
+    public static final String ADD_USER             = "/com/EniacDevelopment/Configuration_Application/View/Uses.fxml";
+    public static final String EDIT_USER            = "/com/EniacDevelopment/Configuration_Application/View/Sensor_Edit_dialog.fxml";
+    public static final String TIMER                = "/com/EniacDevelopment/Configuration_Application/View/Timer.fxml";
+    public static final String EDIT_CONFIG          = "/com/EniacDevelopment/Configuration_Application/View/Config_Edit_dialog.fxml";
+    public static final String EDIT_CONNECTION      = "/com/EniacDevelopment/Configuration_Application/View/Config_Edit_dialog.fxml";
 
     /*
     Method that opens an new child stage.

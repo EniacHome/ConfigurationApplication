@@ -41,11 +41,11 @@ public class Sensor_List {
         sensor_list.clear();
     }
 
-    public static void fill_from_xml_file(String xml_file){
+    public static void fill_list_from_REST(){
 
     }
 
-    public static void save_to_xml_file(String lcation){
+    public static void send_list_to_REST(){
 
     }
 }

@@ -17,10 +17,10 @@ public class Scene_Navigator {
     /*Constants that contain the file location off the *.fxml Scene file*/
     public static final String ROOT_LAYOUT =            "/com/EniacDevelopment/Configuration_Application/View/Root_Layout.fxml";
     public static final String STATUS =                 "/com/EniacDevelopment/Configuration_Application/View/Status.fxml";
-    public static final String SENSOR =        "/com/EniacDevelopment/Configuration_Application/View/Sensor.fxml";
+    public static final String SENSOR =                 "/com/EniacDevelopment/Configuration_Application/View/Sensor.fxml";
     public static final String SENSOR_STATISTICS =      "/com/EniacDevelopment/Configuration_Application/View/Sensor_Statistics.fxml";
     public static final String USERS =                  "/com/EniacDevelopment/Configuration_Application/View/Users.fxml";
-    public static final String APPLICATION_SETTINGS =   "/com/EniacDevelopment/Configuration_Application/View/Application_Settings.fxml";
+    public static final String CONFIGURATION =          "/com/EniacDevelopment/Configuration_Application/View/Configuration.fxml";
     public static final String ALARM =                  "/com/EniacDevelopment/Configuration_Application/View/Alarm.fxml";
 
     /*The main application layout controller*/

@@ -33,14 +33,14 @@ public class Application extends javafx.application.Application{
     public void start(Stage stage) throws Exception{
         stage.setTitle("Configuration Application"); /*Set the title of the stage*/
         stage.initStyle(StageStyle.UNDECORATED); /*Remove the default windows menubar*/
-
         stage.setScene(createScene(loadRootLayout())); /*Create the start (Main) scene*/
-
         mainStage = stage; /*Copy the stage into mainStage*/
         stage.show();
 
 
         //Stage_Navigator.open_stage(Stage_Navigator.LOGIN_SCREEN); /*Open the login screen*/
+        //stage.setOpacity(0); /*Hide the main stage till an successful login has been occurred*/
+
 
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
