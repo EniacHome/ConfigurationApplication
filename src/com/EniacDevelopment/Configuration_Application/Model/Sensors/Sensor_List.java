@@ -1,5 +1,6 @@
 package com.EniacDevelopment.Configuration_Application.Model.Sensors;
 
+import com.EniacDevelopment.Configuration_Application.View.Scene_Navigator;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -12,17 +13,16 @@ import java.util.Observable;
 public class Sensor_List {
     private static ObservableList<Sensor> sensor_list;
 
-    {
+    static{
         sensor_list = FXCollections.observableArrayList();
     }
 
-    public Sensor_List(){
-        sensor_list = FXCollections.observableArrayList();
-    }
-
-    public void update_data(Sensor sensor){
+    public static void update_sensor_list(Sensor sensor){
         if(sensor_list.contains(sensor)){
             sensor_list.set(sensor_list.indexOf(sensor), sensor);
+        }
+        else{
+            add_data(sensor);
         }
     }
 
@@ -30,11 +30,14 @@ public class Sensor_List {
         sensor_list.add(sensor);
     }
 
-    public static ObservableList<Sensor> get_data(){
-        return sensor_list;
+    public static ObservableList<Sensor> get_list(){
+        if(sensor_list != null)
+            return sensor_list;
+        else
+            return null;
     }
 
-    public static  void clear_list(){
+    public static void clear_list(){
         sensor_list.clear();
     }
 

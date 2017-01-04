@@ -1,7 +1,6 @@
 package com.EniacDevelopment.Configuration_Application.View;
 
 import com.EniacDevelopment.Configuration_Application.util.Date_to_String;
-import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import java.time.LocalDateTime;
@@ -11,10 +10,6 @@ import com.EniacDevelopment.Configuration_Application.Model.Sensors.Sensor;
 import com.EniacDevelopment.Configuration_Application.Model.Sensors.Sensor_List;
 
 import javafx.stage.StageStyle;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
 
 /**
  * Created by nickd on 12/29/2016.
@@ -53,8 +48,6 @@ public class Sensor_Controller {
     @FXML
     private Button save_button;
 
-    //private Sensor_List sensor_list;
-
     private static Sensor selected_sensor;
 
     /*
@@ -62,7 +55,7 @@ public class Sensor_Controller {
     * The constructor is called before the initialize() method.
     */
     public Sensor_Controller() {
-        //sensor_list = new Sensor_List();
+
     }
 
     @FXML
@@ -80,14 +73,23 @@ public class Sensor_Controller {
         sensor_table.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> show_sensor_details(newValue));
 
+        /*Handle double clicks on rows*/
+        sensor_table.setRowFactory( double_click -> {
+            TableRow<Sensor> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if(event.getClickCount() == 2 && (!row.isEmpty())){
+                    Sensor row_data = row.getItem();
+                    handle_edit_button();
+                }
+            });
+            return row;
+        });
+
         sensor_table.sort();
-        //sensor_table.setItems(sensor_list.get_data());
-        sensor_table.setItems(Sensor_List.get_data());
+        sensor_table.setItems(Sensor_List.get_list());
     }
 
     private void fill_list(){
-        //sensor_list.add_data(new Sensor(Sensor.Sensor_Type.Contatc_Sensor, "Check_Test"));
-        //sensor_list.add_data(new Sensor(Sensor.Sensor_Type.Contatc_Sensor, "TEST"));
         Sensor_List.add_data(new Sensor(Sensor.Sensor_Type.Contatc_Sensor, "Check_Test"));
         Sensor_List.add_data(new Sensor(Sensor.Sensor_Type.Contatc_Sensor, "TEST"));
 
@@ -99,7 +101,6 @@ public class Sensor_Controller {
         test_sensor.set_Sensor_status(Sensor.Sensor_Status.Enabled);
 
         Sensor_List.add_data(test_sensor);
-        //sensor_list.add_data(test_sensor);
     }
 
     private void show_sensor_details(Sensor sensor){
@@ -180,7 +181,6 @@ public class Sensor_Controller {
 
     @FXML
     private void handle_reset_button(){
-        //sensor_list.clear_list();
         Sensor_List.clear_list();
         initialize();
     }
@@ -208,5 +208,12 @@ public class Sensor_Controller {
         catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void handle_add_button(){
+        Sensor temp_sensor = new Sensor();
+        selected_sensor = temp_sensor;
+        Stage_Navigator.open_stage(Stage_Navigator.EDIT_USER);
     }
 }

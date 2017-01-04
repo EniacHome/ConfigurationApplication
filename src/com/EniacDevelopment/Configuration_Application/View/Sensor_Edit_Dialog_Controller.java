@@ -2,6 +2,7 @@ package com.EniacDevelopment.Configuration_Application.View;
 
 import com.EniacDevelopment.Configuration_Application.Application;
 import com.EniacDevelopment.Configuration_Application.Model.Sensors.Sensor;
+import com.EniacDevelopment.Configuration_Application.Model.Sensors.Sensor_List;
 import javafx.collections.FXCollections;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -61,6 +62,7 @@ public class Sensor_Edit_Dialog_Controller {
         this.sensor_name.setText(sensor.get_Sensor_name());
         this.sensor_type.getSelectionModel().select(sensor.get_Sensor_type());
         this.sensor_status.getSelectionModel().select(sensor.get_Sensor_status());
+
     }
 
     /**
@@ -69,16 +71,14 @@ public class Sensor_Edit_Dialog_Controller {
     @FXML
     private void handle_ok() {
         if(is_input_valid()){
-            sensor.set_Sensor_name(this.sensor_name.getText());
-            sensor.set_Sensor_status(this.sensor_status.getValue());
-            sensor.set_Sensor_type(this.sensor_type.getValue());
-            sensor.set_Sensor_update_time(LocalDateTime.now());
-            sensor.set_Sensor_value(0);
-            sensor.set_Sensor_signal_status(Sensor.Sensor_Signal_Status.Invallid);
+            this.sensor.set_Sensor_name(this.sensor_name.getText());
+            this.sensor.set_Sensor_status(this.sensor_status.getValue());
+            this.sensor.set_Sensor_type(this.sensor_type.getValue());
+            this.sensor.set_Sensor_update_time(LocalDateTime.now());
+            this.sensor.set_Sensor_value(0);
+            this.sensor.set_Sensor_signal_status(Sensor.Sensor_Signal_Status.Invallid);
 
-
-
-            Scene_Navigator.load_Scene(Scene_Navigator.SENSOR);
+            Sensor_List.update_sensor_list(this.sensor);
             Stage_Navigator.close_stage();
         }
     }

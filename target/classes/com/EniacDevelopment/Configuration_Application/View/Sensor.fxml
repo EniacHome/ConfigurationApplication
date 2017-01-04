@@ -65,7 +65,7 @@
                   </GridPane>
                   <ButtonBar layoutX="598.0" layoutY="630.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="35.0">
                     <buttons>
-                      <Button fx:id="add_button" mnemonicParsing="false" text="Add" />
+                      <Button fx:id="add_button" mnemonicParsing="false" onAction="#handle_add_button" text="Add" />
                         <Button fx:id="edit_button" mnemonicParsing="false" onAction="#handle_edit_button" text="Edit" />
                         <Button fx:id="delete_button" mnemonicParsing="false" onAction="#handle_delete_button" text="Delete" />
                         <Button fx:id="reset_button" mnemonicParsing="false" onAction="#handle_reset_button" text="Reset" />

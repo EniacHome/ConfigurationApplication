@@ -64,10 +64,8 @@ public class Root_Layout_controller {
         System.exit(0);
     }
 
-    //Handle mouse input.
     @FXML
-    private void handleEvent(ActionEvent event){
-        if(event.getSource() == Application.getPrimaryStage().getScene())
-            System.out.println("TEST");
+    private void handle_sensor_status_tab(){
+        Scene_Navigator.load_Scene(Scene_Navigator.SENSOR);
     }
 }
