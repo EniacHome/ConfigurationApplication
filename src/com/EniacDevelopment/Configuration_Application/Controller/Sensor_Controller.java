@@ -1,7 +1,9 @@
 package com.EniacDevelopment.Configuration_Application.Controller;
 
+import com.EniacDevelopment.Configuration_Application.Model.User.User;
 import com.EniacDevelopment.Configuration_Application.util.Stage_Navigator;
 import com.EniacDevelopment.Configuration_Application.util.Date_to_String;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -51,7 +53,7 @@ public class Sensor_Controller {
     @FXML
     private Button reset_button;
     @FXML
-    private Button save_button;
+    private Button update_button;
 
     private static boolean is_used;
 

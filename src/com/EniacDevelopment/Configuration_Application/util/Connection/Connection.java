@@ -1,6 +1,7 @@
 package com.EniacDevelopment.Configuration_Application.util.Connection;
 
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
+import com.sun.org.apache.regexp.internal.RE;
 import org.glassfish.jersey.media.sse.SseFeature;
 
 import javax.ws.rs.client.Client;
@@ -13,7 +14,7 @@ import javax.ws.rs.client.WebTarget;
 public class Connection {
     public static final String BASE_URI = "http://localhost:9090/service/"; /*Default localhost URL*/
 
-    private static WebTarget REST_connection; /*Static REST connection object*/
+    private static WebTarget REST_connection = null; /*Static REST connection object*/
     private static String ip_address, port_number, connection_url;
 
     private enum connection_status{
@@ -22,13 +23,15 @@ public class Connection {
 
     private Connection(){}
 
-    private WebTarget getWebTarger() {
-        // create the client
-        Client c = ClientBuilder.newClient()
-                .register(SseFeature.class)
-                .register(JacksonJsonProvider.class);
-
-        return c.target(BASE_URI);
+    public static WebTarget getWebTarger() {
+        if(REST_connection == null) {
+            // create the client
+            Client c = ClientBuilder.newClient()
+                    .register(SseFeature.class)
+                    .register(JacksonJsonProvider.class);
+            REST_connection = c.target(BASE_URI);
+        }
+        return REST_connection;
     }
 
     public void configure_connection(String ip_address, String port_number){

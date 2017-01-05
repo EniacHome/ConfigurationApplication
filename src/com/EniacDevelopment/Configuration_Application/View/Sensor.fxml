@@ -72,7 +72,7 @@
                         <Button fx:id="edit_button" mnemonicParsing="false" onAction="#handle_edit_button" text="Edit" />
                         <Button fx:id="delete_button" mnemonicParsing="false" onAction="#handle_delete_button" text="Delete" />
                         <Button fx:id="reset_button" mnemonicParsing="false" onAction="#handle_reset_button" text="Reset" />
-                        <Button fx:id="save_button" mnemonicParsing="false" text="Save" />
+                        <Button fx:id="update_button" mnemonicParsing="false" text="Save" />
                     </buttons>
                   </ButtonBar>
                </children>
