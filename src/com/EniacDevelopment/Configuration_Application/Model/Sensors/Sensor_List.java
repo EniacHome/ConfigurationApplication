@@ -1,21 +1,29 @@
 package com.EniacDevelopment.Configuration_Application.Model.Sensors;
 
-import com.EniacDevelopment.Configuration_Application.View.Scene_Navigator;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 
-import java.util.Observable;
-
 /**
+ * Singleton List that contains the local sensor values
+ *
  * Created by nickd on 12/29/2016.
  */
 public class Sensor_List {
-    private static ObservableList<Sensor> sensor_list;
 
-    static{
-        sensor_list = FXCollections.observableArrayList();
+    /*Singleton Sensor_List object*/
+    private static ObservableList<Sensor> sensor_list = FXCollections.observableArrayList();
+
+    static {
+        sensor_list.addListener(new ListChangeListener<Sensor>() {
+            @Override
+            public void onChanged(Change<? extends Sensor> c) {
+
+            }
+        });
     }
+
+    private Sensor_List(){}
 
     public static void update_sensor_list(Sensor sensor){
         if(sensor_list.contains(sensor)){
@@ -31,10 +39,7 @@ public class Sensor_List {
     }
 
     public static ObservableList<Sensor> get_list(){
-        if(sensor_list != null)
-            return sensor_list;
-        else
-            return null;
+        return sensor_list;
     }
 
     public static void clear_list(){

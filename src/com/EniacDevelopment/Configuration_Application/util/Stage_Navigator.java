@@ -1,4 +1,4 @@
-package com.EniacDevelopment.Configuration_Application.View;
+package com.EniacDevelopment.Configuration_Application.util;
 
 import com.EniacDevelopment.Configuration_Application.Application;
 import javafx.fxml.FXMLLoader;

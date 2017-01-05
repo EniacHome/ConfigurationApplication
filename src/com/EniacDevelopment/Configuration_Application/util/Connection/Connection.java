@@ -1,6 +1,5 @@
-package com.EniacDevelopment.Configuration_Application.Connection;
+package com.EniacDevelopment.Configuration_Application.util.Connection;
 
-import com.EniacDevelopment.Configuration_Application.Application;
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 import org.glassfish.jersey.media.sse.SseFeature;
 
@@ -17,11 +16,13 @@ public class Connection {
     private static WebTarget REST_connection; /*Static REST connection object*/
     private static String ip_address, port_number, connection_url;
 
-    static{
-
+    private enum connection_status{
+        CONNECTED, DISCONNECTED
     }
 
-    public static WebTarget getWebTarger() {
+    private Connection(){}
+
+    private WebTarget getWebTarger() {
         // create the client
         Client c = ClientBuilder.newClient()
                 .register(SseFeature.class)
@@ -29,5 +30,16 @@ public class Connection {
 
         return c.target(BASE_URI);
     }
+
+    public void configure_connection(String ip_address, String port_number){
+        connection_url = "http://" + ip_address + ":" + port_number + "/service";
+    }
+
+    public void test_connection(){
+
+    }
+
+
+
 }
 

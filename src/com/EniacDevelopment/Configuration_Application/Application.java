@@ -1,21 +1,13 @@
 package com.EniacDevelopment.Configuration_Application;
 
-import com.EniacDevelopment.Configuration_Application.Model.Sensors.Sensor;
-import com.EniacDevelopment.Configuration_Application.Model.Sensors.Sensor_List;
-import com.EniacDevelopment.Configuration_Application.View.Root_Layout_controller;
-import com.EniacDevelopment.Configuration_Application.View.Scene_Navigator;
-import com.EniacDevelopment.Configuration_Application.View.Sensor_Controller;
-import com.EniacDevelopment.Configuration_Application.View.Stage_Navigator;
+import com.EniacDevelopment.Configuration_Application.Controller.Root_Layout_controller;
+import com.EniacDevelopment.Configuration_Application.util.Scene_Navigator;
 import com.EniacDevelopment.Configuration_Application.util.Time_Out;
 
-import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;

@@ -1,17 +1,9 @@
-package com.EniacDevelopment.Configuration_Application.View;
+package com.EniacDevelopment.Configuration_Application.Controller;
 
-import com.EniacDevelopment.Configuration_Application.Application;
-
-import javafx.event.ActionEvent;
+import com.EniacDevelopment.Configuration_Application.util.Scene_Navigator;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
-
-import java.awt.*;
-import java.awt.MenuBar;
-import java.awt.MenuItem;
 
 /**
  * Created by nickd on 12/28/2016.

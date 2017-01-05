@@ -29,6 +29,7 @@ public class Sensor {
     }
 
     private final StringProperty Sensor_name;
+    private final IntegerProperty Sensor_id;
     private final ObjectProperty<Sensor_Type> Sensor_type;
     private final ObjectProperty<Sensor_Status> Sensor_status;
     private final ObjectProperty<Sensor_Signal_Status> Sensor_signal_status;
@@ -38,7 +39,7 @@ public class Sensor {
 
     /*Default constructor*/
     public Sensor(){
-        this(Sensor_Type.Undefined, null);
+        this(Sensor_Type.Undefined, null, -1);
     }
 
     /*
@@ -47,9 +48,10 @@ public class Sensor {
     * @param Sensor_type
     * @param Sensor_name
     */
-    public Sensor(Sensor_Type Sensor_type, String Sensor_name){
+    public Sensor(Sensor_Type Sensor_type, String Sensor_name, int Sensor_id){
         this.Sensor_type = new SimpleObjectProperty<Sensor_Type>(Sensor_type);
         this.Sensor_name = new SimpleStringProperty(Sensor_name);
+        this.Sensor_id = new SimpleIntegerProperty(Sensor_id);
 
         /*Default init data*/
         this.Sensor_status = new SimpleObjectProperty<Sensor_Status>(Sensor_Status.Disabled);
@@ -62,6 +64,10 @@ public class Sensor {
     public String get_Sensor_name(){ return this.Sensor_name.get();}
     public StringProperty get_Sensor_name_property(){ return this.Sensor_name;}
     public void set_Sensor_name(String Sensor_name){ this.Sensor_name.set(Sensor_name);}
+
+    public int get_Sensor_Id(){ return this.Sensor_id.get();}
+    public IntegerProperty get_Sensor_id_propotery(){ return this.Sensor_id;}
+    public void set_Sensor_id(int Sensor_id){ this.Sensor_id.set(Sensor_id);}
 
     public Sensor_Type get_Sensor_type(){ return this.Sensor_type.get();}
     public ObjectProperty<Sensor_Type> get_Sensor_type_property(){ return this.Sensor_type;}

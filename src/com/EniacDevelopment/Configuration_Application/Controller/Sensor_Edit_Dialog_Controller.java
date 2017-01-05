@@ -1,9 +1,8 @@
-package com.EniacDevelopment.Configuration_Application.View;
+package com.EniacDevelopment.Configuration_Application.Controller;
 
-import com.EniacDevelopment.Configuration_Application.Application;
 import com.EniacDevelopment.Configuration_Application.Model.Sensors.Sensor;
 import com.EniacDevelopment.Configuration_Application.Model.Sensors.Sensor_List;
-import javafx.collections.FXCollections;
+import com.EniacDevelopment.Configuration_Application.util.Stage_Navigator;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.fxml.FXML;
@@ -20,6 +19,8 @@ import java.time.LocalDateTime;
 public class Sensor_Edit_Dialog_Controller {
     @FXML
     private TextField sensor_name;
+    @FXML
+    private TextField sensor_id;
     @FXML
     private ChoiceBox<Sensor.Sensor_Type> sensor_type = new ChoiceBox<>();
     @FXML
@@ -55,14 +56,16 @@ public class Sensor_Edit_Dialog_Controller {
 
     /**
      * Sets the Sensor to be edited in the dialog
-     * */
-    public void set_sensor(Sensor sensor){
+     */
+    public void set_sensor(Sensor sensor) {
         this.sensor = sensor;
 
         this.sensor_name.setText(sensor.get_Sensor_name());
         this.sensor_type.getSelectionModel().select(sensor.get_Sensor_type());
         this.sensor_status.getSelectionModel().select(sensor.get_Sensor_status());
 
+        if(sensor.get_Sensor_Id() >= 0)
+            this.sensor_id.setText(Integer.toString(sensor.get_Sensor_Id()));
     }
 
     /**
@@ -70,10 +73,11 @@ public class Sensor_Edit_Dialog_Controller {
      */
     @FXML
     private void handle_ok() {
-        if(is_input_valid()){
+        if (is_input_valid()) {
             this.sensor.set_Sensor_name(this.sensor_name.getText());
             this.sensor.set_Sensor_status(this.sensor_status.getValue());
             this.sensor.set_Sensor_type(this.sensor_type.getValue());
+            this.sensor.set_Sensor_id(Integer.parseInt(this.sensor_id.getText()));
             this.sensor.set_Sensor_update_time(LocalDateTime.now());
             this.sensor.set_Sensor_value(0);
             this.sensor.set_Sensor_signal_status(Sensor.Sensor_Signal_Status.Invallid);
@@ -94,11 +98,24 @@ public class Sensor_Edit_Dialog_Controller {
     /**
      * Validates the user input in the text fields.
      */
-    private boolean is_input_valid(){
+    private boolean is_input_valid() {
         String error_message = "";
 
-        if(this.sensor_name.getText() == null || this.sensor_name.getText().length() == 0){
+        if (this.sensor_name.getText() == null || this.sensor_name.getText().length() == 0) {
             error_message += "No valid sensor name!\n";
+        }
+
+        if (this.sensor_id.getText() == null || this.sensor_id.getText().length() == 0) {
+            error_message += "No valid sensor id!\n";
+        } else {
+            try {
+                int id_value = Integer.parseInt(this.sensor_id.getText());
+                if (id_value < 0 || id_value > 254) {
+                    error_message += "The id must be 0 or bigger and smaller than 255!";
+                }
+            } catch (Exception e) {
+                error_message += e + "\n";
+            }
         }
 
         if (error_message.length() == 0) {

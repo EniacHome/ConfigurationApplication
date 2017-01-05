@@ -1,6 +1,5 @@
 package com.EniacDevelopment.Configuration_Application.util;
 
-import com.EniacDevelopment.Configuration_Application.View.Stage_Navigator;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;

@@ -1,5 +1,6 @@
-package com.EniacDevelopment.Configuration_Application.View;
+package com.EniacDevelopment.Configuration_Application.Controller;
 
+import com.EniacDevelopment.Configuration_Application.util.Stage_Navigator;
 import com.EniacDevelopment.Configuration_Application.util.Date_to_String;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -26,6 +27,8 @@ public class Sensor_Controller {
 
     @FXML
     private Label sensor_type;
+    @FXML
+    private Label sensor_id;
     @FXML
     private Label sensor_name;
     @FXML
@@ -75,6 +78,8 @@ public class Sensor_Controller {
             is_used = true;
         }
 
+        show_sensor_details(Sensor_List.get_list().get(0));
+
         /*Listen for selection changes and show the sensor details when changed*/
         sensor_table.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> show_sensor_details(newValue));
@@ -95,14 +100,15 @@ public class Sensor_Controller {
     }
 
     private void fill_list() {
-        Sensor_List.add_data(new Sensor(Sensor.Sensor_Type.Contatc_Sensor, "Check_Test"));
-        Sensor_List.add_data(new Sensor(Sensor.Sensor_Type.Contatc_Sensor, "TEST"));
+        Sensor_List.add_data(new Sensor(Sensor.Sensor_Type.Contatc_Sensor, "Check_Test", 0));
+        Sensor_List.add_data(new Sensor(Sensor.Sensor_Type.Contatc_Sensor, "TEST", 0));
 
-        Sensor test_sensor = new Sensor(Sensor.Sensor_Type.Infrared_Sensor, "TIMETEST");
+        Sensor test_sensor = new Sensor(Sensor.Sensor_Type.Infrared_Sensor, "TIMETEST", 22);
         test_sensor.set_Sensor_reading_time(LocalDateTime.now());
         test_sensor.set_Sensor_signal_status(Sensor.Sensor_Signal_Status.OK);
         test_sensor.set_Sensor_update_time(LocalDateTime.now());
         test_sensor.set_Sensor_value(20);
+        test_sensor.set_Sensor_id(20);
         test_sensor.set_Sensor_status(Sensor.Sensor_Status.Enabled);
 
         Sensor_List.add_data(test_sensor);
@@ -114,6 +120,7 @@ public class Sensor_Controller {
             /*Fill the labels with info from the Sensor object*/
             this.sensor_name.setText(sensor.get_Sensor_name());
             this.sensor_type.setText(sensor.get_Sensor_type().toString());
+            this.sensor_id.setText(Integer.toString(sensor.get_Sensor_Id()));
             this.sensor_value.setText(Integer.toString(sensor.get_Sensor_value()));
             this.sensor_status.setText(sensor.get_Sensor_status().toString());
             this.sensor_value_status.setText(sensor.get_Sensor_signal_status().toString());
@@ -128,6 +135,7 @@ public class Sensor_Controller {
             this.sensor_name.setText("");
             this.sensor_value.setText("");
             this.sensor_type.setText("");
+            this.sensor_id.setText("");
             this.sensor_update_time.setText("");
             this.sensor_value_status.setText("");
             this.sensor_reading_time.setText("");
@@ -184,6 +192,7 @@ public class Sensor_Controller {
     @FXML
     private void handle_reset_button() {
         Sensor_List.clear_list();
+        is_used = false;
         initialize();
     }
 
